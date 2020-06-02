@@ -10,6 +10,7 @@ public class IAWalk : MonoBehaviour
     public Animator anim;
     public Vector3 patrolposition;
     public float stoppedTime;
+    public float desiredRotationSpeed = 2;
     public enum IaState
     {
         Stopped,
@@ -53,6 +54,8 @@ public class IAWalk : MonoBehaviour
         }
 
         anim.SetFloat("Velocity", agent.velocity.magnitude);
+
+        LockOnTheEnemy();
     }
 
     void Patrol()
@@ -121,5 +124,16 @@ public class IAWalk : MonoBehaviour
         anim.SetBool("Attack", false);
         anim.SetBool("Die",true);
         Destroy(gameObject, 3);
+    }
+
+    void LockOnTheEnemy()
+    {
+        Vector3 relativePos = (target.transform.position - transform.position);
+
+        Quaternion LookAtRotation = Quaternion.LookRotation(relativePos);
+
+        Quaternion LookAtRotationOnly_Y = Quaternion.Euler(transform.rotation.eulerAngles.x, LookAtRotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, LookAtRotationOnly_Y, desiredRotationSpeed);
     }
 }

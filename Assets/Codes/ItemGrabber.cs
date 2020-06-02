@@ -9,7 +9,7 @@ public class ItemGrabber : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.CompareTag("WeaponDroped"))
+        if (other.CompareTag("WeaponDropedPlayer"))
         {
             if (weaponOnHand)
             {

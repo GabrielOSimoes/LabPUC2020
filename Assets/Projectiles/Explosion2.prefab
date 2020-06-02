@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3524586182117839610}
   - component: {fileID: 2772299796791275005}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Grenade1Short
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 3118710290158114490}
   - component: {fileID: 1055095357418955218}
   - component: {fileID: 4278052752031825048}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Explosion2
   m_TagString: Projectiles
   m_Icon: {fileID: 0}

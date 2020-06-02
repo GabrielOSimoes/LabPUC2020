@@ -12,6 +12,9 @@ public class TrdWalk : MonoBehaviour
         die,
         attack,
     }
+
+    private bool willDie = false;
+
     public States state;
     public Animator anim;
     public Rigidbody rdb;
@@ -33,6 +36,9 @@ public class TrdWalk : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         StartCoroutine(Idle());
 
         referenceObject=Camera.main.GetComponent<trdCam>().GetRefereceObject();
@@ -41,45 +47,51 @@ public class TrdWalk : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //criacao de vetor de movimento local
-        move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        move = referenceObject.transform.TransformDirection(move);
-
-        //girar pra direcao das teclas
-        if (move.magnitude > 0)
+        if(willDie == false)
         {
-            direction = move;
-        }
-        transform.forward =Vector3.Lerp(transform.forward,direction,Time.fixedDeltaTime*20);
+            //criacao de vetor de movimento local
+            move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            move = referenceObject.transform.TransformDirection(move);
 
-       
-        //reduz a força de movimento de acordo com a velocidade pra ter muita força de saida mas pouca velocidade. 
-        rdb.AddForce(move * (movforce/(rdb.velocity.magnitude+1)));
+            //girar pra direcao das teclas
+            if (move.magnitude > 0)
+            {
+                direction = move;
+            }
+            transform.forward = Vector3.Lerp(transform.forward, direction, Time.fixedDeltaTime * 20);
 
-        Vector3 velocityWoY = new Vector3(rdb.velocity.x, 0, rdb.velocity.z);
-        rdb.AddForce(-velocityWoY * 500);
+
+            //reduz a força de movimento de acordo com a velocidade pra ter muita força de saida mas pouca velocidade. 
+            rdb.AddForce(move * (movforce / (rdb.velocity.magnitude + 1)));
+
+            Vector3 velocityWoY = new Vector3(rdb.velocity.x, 0, rdb.velocity.z);
+            rdb.AddForce(-velocityWoY * 500);
 
 
-        if(Physics.Raycast(transform.position+ Vector3.up*.5f, Vector3.down,out RaycastHit hit, 65279))
-        {
-            anim.SetFloat("GroundDistance", hit.distance);
+            if (Physics.Raycast(transform.position + Vector3.up * .5f, Vector3.down, out RaycastHit hit, 65279))
+            {
+                anim.SetFloat("GroundDistance", hit.distance);
+            }
         }
 
     }
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if(willDie == false)
         {
-            StartCoroutine(Attack());
-        }
+            if (Input.GetButtonDown("Fire1"))
+            {
+                StartCoroutine(Attack());
+            }
 
-        if (Input.GetButtonDown("Jump"))
-        {
-            StartCoroutine(Jump());
-        }
-        if (Input.GetButtonUp("Jump"))
-        {
-            jumptime = 0;
+            if (Input.GetButtonDown("Jump"))
+            {
+                StartCoroutine(Jump());
+            }
+            if (Input.GetButtonUp("Jump"))
+            {
+                jumptime = 0;
+            }
         }
     }
 
@@ -169,7 +181,11 @@ public class TrdWalk : MonoBehaviour
         //saida do estado
     }
 
-
+    public void WillDie()
+    {
+        willDie = true;
+        anim.SetTrigger("Dead");
+    }
 
     private void OnAnimatorIK(int layerIndex)
     {

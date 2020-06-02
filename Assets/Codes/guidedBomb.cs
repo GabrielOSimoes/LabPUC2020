@@ -6,7 +6,7 @@ public class guidedBomb : MonoBehaviour
 {
     public GameObject target;
     Rigidbody rdb;
-    public float bombForce = 1000;
+    public float bombForce = 800;
     public GameObject explosion;
     // Start is called before the first frame update
     void Start()
@@ -47,7 +47,7 @@ public class guidedBomb : MonoBehaviour
                 {
                     hit.rigidbody.isKinematic = false;
                     hit.rigidbody.AddExplosionForce(bombForce, transform.position, 10);
-                    hit.collider.gameObject.SendMessage("GetDamage", SendMessageOptions.DontRequireReceiver);
+                    hit.collider.gameObject.SendMessage("DamagePlayer", SendMessageOptions.DontRequireReceiver);
                 }
             }
         }
