@@ -10,6 +10,8 @@ TagManager:
   - Enemy
   - WeaponDropedPlayer
   - WeaponDropedEnemy
+  - GameManager
+  - ShrineLocation
   layers:
   - Default
   - TransparentFX

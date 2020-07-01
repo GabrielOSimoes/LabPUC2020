@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class DamageControlPlayer : MonoBehaviour
 {
+    GameManager gameManager;
+
     public int lifes = 30;
     public Animator anim;
     bool willDie = false;
@@ -14,6 +16,7 @@ public class DamageControlPlayer : MonoBehaviour
 
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         gameObjectTag = gameObject.tag;
     }
 
@@ -24,7 +27,7 @@ public class DamageControlPlayer : MonoBehaviour
       if (lifes <= 0 && !willDie)
       {
           SendMessage("WillDie");
-            
+          gameManager.GameOver();
           willDie = true; // desativa todas as funções do player antes de tocar a animação de morte e destruir o gameobject
           anim.SetTrigger("Dead");
             
