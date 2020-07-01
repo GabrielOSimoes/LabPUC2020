@@ -36,15 +36,13 @@ public class DamageControlEnemy : MonoBehaviour
             
         }
 
-        if (willDie && thisObjectCanBeDestroyed == false)
+        if (willDie)
         {
             timeDeadStart += Time.deltaTime;
 
             if (timeDeadStart >= timeDeadEnd)
             {
                 Destroy(gameObject,10);
-
-                thisObjectCanBeDestroyed = true;
 
                 if (gameObject.GetComponent<Boss>() != null)
                     gameObject.GetComponent<Boss>().WillDie();

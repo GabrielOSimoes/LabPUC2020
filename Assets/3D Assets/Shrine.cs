@@ -29,28 +29,9 @@ public class Shrine : MonoBehaviour
             gameManager.SubscribeShrineNameToDestroy(gameObject.name);
 
             SceneManager.LoadScene(sceneToGoName);
-        }           
+        }        
         
        
-    }
-    
-   IEnumerator MyLoadScene(string load)
-   {
-       //Camera.main.SendMessage("CallFadeOut");
-
-       //se pá mete um canvas e usa o alpha group p dar o fade.
-       //call fade out method
-       yield return new WaitForSeconds(2);
-       SceneManager.LoadScene(load);
-   }
-
-    private void FadeOut()
-    {
-
-    }
-
-    private void FadeIn()
-    {
-
-    }
+    }    
+   
 }

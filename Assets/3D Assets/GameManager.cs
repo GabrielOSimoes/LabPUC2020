@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<string> shrineNames;
     // Start is called before the first frame update
 
+    public TMPro.TextMeshProUGUI QuestText;
+    bool questUpdated = false;
+
     bool spawnedForTheFirstTime = false;
 
     bool openTheGates = false;
@@ -34,7 +37,22 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(questUpdated == false)
+        {
+            questUpdated = true;
+            if (bossKilledCount == 1)
+            {
+                QuestText.text = "Entre na próxima shrine e elimine o segundo demônio.";
+            }
+            else if (bossKilledCount == 2)
+            {
+                QuestText.text = "Entre na última shrine e elimine o demônio C'aa Piroto.";
+            }
+            else if (bossKilledCount == 3)
+            {
+                QuestText.text = "Explore a cidade e encontre a shrine divina.";
+            }
+        }
     }
 
     public void SubscribeShrine(UnityEngine.Vector3 shrinePosition)
@@ -84,16 +102,7 @@ public class GameManager : MonoBehaviour
     public void BossKilled()
     {
         bossKilledCount+=1;
-
-        if(bossKilledCount == 2)
-        {
-            //open shrine 3
-        }
-
-        if(bossKilledCount == 3)
-        {
-            //open final gate
-        }
+       
     }
 
     public int GetBossKilledCount()

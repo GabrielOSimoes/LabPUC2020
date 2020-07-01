@@ -67,7 +67,7 @@ public class PlayerSkills : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.Button(new Rect(10, 40, 400, 30), "Press E to Cast a Skill. Skill current time: " + skillCurrentTime.ToString());
-        GUI.Button(new Rect(10, 70, 400, 30), "Skill A Cooldown Time: " + skillCoolDown.ToString());
+       // GUI.Button(new Rect(10, 40, 400, 30), "Press E to Cast a Skill. Skill current time: " + skillCurrentTime.ToString());
+       // GUI.Button(new Rect(10, 70, 400, 30), "Skill A Cooldown Time: " + skillCoolDown.ToString());
     }
 }

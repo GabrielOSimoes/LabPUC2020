@@ -6,9 +6,13 @@ public class Boss : MonoBehaviour
 {
     GameManager gameManager;
     bool deathMessageReceived = false;
+    public GameObject shrineDoor;
 
     private void Awake()
     {
+        if (shrineDoor != null)
+            shrineDoor.SetActive(false);
+
         gameManager = FindObjectOfType<GameManager>();
     }
     void Start()
@@ -26,8 +30,13 @@ public class Boss : MonoBehaviour
     {
         if(deathMessageReceived == false)
         {
+            if (shrineDoor != null)
+                shrineDoor.SetActive(true);
+
             deathMessageReceived = true;
             gameManager.BossKilled();
+
+            
         }
     }
 }

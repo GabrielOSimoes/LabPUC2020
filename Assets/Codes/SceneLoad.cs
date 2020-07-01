@@ -5,7 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoad : MonoBehaviour
 {
-    // Start is called before the first frame update
+    GameManager gameManager;
+
+    private void Awake()
+    {
+       
+    }
+
     void Start()
     {
         Cursor.visible = true;
@@ -20,18 +26,20 @@ public class SceneLoad : MonoBehaviour
 
     public void LoadMenuInicial()
     {
+        ResetGameManager();
         SceneManager.LoadScene("Start");
     }
 
     public void LoadGame()
     {
-        SceneManager.LoadScene("MinhaSceneTran2");
 
-        Debug.Log("Ué clicou no loadscene");
+        ResetGameManager();
+        SceneManager.LoadScene("MinhaSceneTran2");
     }
 
     public void LoadVitoria()
     {
+        ResetGameManager();
         SceneManager.LoadScene("Vitoria");
     }
 
@@ -43,5 +51,12 @@ public class SceneLoad : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             LoadVitoria();
         }
+    }
+
+    private void ResetGameManager()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+        if (gameManager != null)
+            Destroy(gameManager.gameObject);
     }
 }
