@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
 
     bool spawnedForTheFirstTime = false;
 
+    bool openTheGates = false;
+    [SerializeField] int bossKilledCount = 0;
+
     private void Awake()
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("GameManager");
@@ -76,5 +79,25 @@ public class GameManager : MonoBehaviour
     public List<string> GetShrineNameToDestroy()
     {
         return shrineNames;
+    }
+
+    public void BossKilled()
+    {
+        bossKilledCount+=1;
+
+        if(bossKilledCount == 2)
+        {
+            //open shrine 3
+        }
+
+        if(bossKilledCount == 3)
+        {
+            //open final gate
+        }
+    }
+
+    public int GetBossKilledCount()
+    {
+        return bossKilledCount;
     }
 }

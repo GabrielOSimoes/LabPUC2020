@@ -11,6 +11,7 @@ public class DamageControlEnemy : MonoBehaviour
     public string gameObjectTag;
     float timeDeadStart = 0;
     public float timeDeadEnd = 0;
+    bool thisObjectCanBeDestroyed = false;
 
     void Start()
     {
@@ -30,16 +31,23 @@ public class DamageControlEnemy : MonoBehaviour
             gameObject.GetComponent<NavMeshAgent>().enabled = false;
             
             willDie = true; // desativa todas as funções do player antes de tocar a animação de morte e destruir o gameobject
-            anim.SetTrigger("Dead");           
+            anim.SetTrigger("Dead");
+
+            
         }
 
-        if (willDie)
+        if (willDie && thisObjectCanBeDestroyed == false)
         {
             timeDeadStart += Time.deltaTime;
 
             if (timeDeadStart >= timeDeadEnd)
             {
-                Destroy(gameObject,10);                              
+                Destroy(gameObject,10);
+
+                thisObjectCanBeDestroyed = true;
+
+                if (gameObject.GetComponent<Boss>() != null)
+                    gameObject.GetComponent<Boss>().WillDie();
             }
         }
         
