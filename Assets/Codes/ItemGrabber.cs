@@ -6,6 +6,8 @@ public class ItemGrabber : MonoBehaviour
 {
     public GameObject weaponOnHand; 
     public Transform handposition;
+    public TrdWalk playerTrdWalk;
+
     private void OnTriggerEnter(Collider other)
     {
 
@@ -25,6 +27,11 @@ public class ItemGrabber : MonoBehaviour
             weaponOnHand.GetComponent<Rigidbody>().isKinematic = true;//desativa o rigidbody
             other.transform.localRotation = Quaternion.identity;//reseta a rotacao
             other.transform.gameObject.layer = transform.gameObject.layer;
+
+            if (playerTrdWalk != null)
+            {
+                playerTrdWalk.SetWeapon(weaponOnHand);
+            }
 
         }
     }

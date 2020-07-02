@@ -26,7 +26,7 @@ public class Shrine : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             if(shrineToGoBack == false)
-            gameManager.SubscribeShrineNameToDestroy(gameObject.name);
+            gameManager.SetShrineNameToDestroy(gameObject.name);
 
             SceneManager.LoadScene(sceneToGoName);
         }        

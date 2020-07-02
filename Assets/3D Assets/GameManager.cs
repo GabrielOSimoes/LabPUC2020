@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<string> shrineNames;
     // Start is called before the first frame update
 
+    [SerializeField] int playerHealth;
+
     public TMPro.TextMeshProUGUI QuestText;
     bool questUpdated = false;
 
@@ -55,13 +57,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SubscribeShrine(UnityEngine.Vector3 shrinePosition)
+    public void SetShrineSpawnPoint(UnityEngine.Vector3 shrinePosition)
     {
         this.shrinePosition = shrinePosition;
         currentSpawnPoint = shrinePosition;
     }
 
-    public void SubscribeSpawnPoint(UnityEngine.Vector3 currentSpawnPoint)
+    public void SetSpawnPoint(UnityEngine.Vector3 currentSpawnPoint)
     {
         if(spawnedForTheFirstTime == false)
         {
@@ -89,7 +91,7 @@ public class GameManager : MonoBehaviour
         return currentSpawnPoint;
     }
 
-    public void SubscribeShrineNameToDestroy(string name)
+    public void SetShrineNameToDestroy(string name)
     {
         shrineNames.Add(name);
     }
@@ -108,5 +110,15 @@ public class GameManager : MonoBehaviour
     public int GetBossKilledCount()
     {
         return bossKilledCount;
+    }
+
+    public int GetPlayerHealth()
+    {        
+        return playerHealth;
+    }
+
+    public void SetPlayerHealth(int playerHealth)
+    {
+        this.playerHealth = playerHealth;
     }
 }

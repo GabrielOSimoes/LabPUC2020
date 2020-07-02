@@ -10,12 +10,13 @@ public class PlayerAwakeSpawnPoint : MonoBehaviour
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
+        gameManager.SetSpawnPoint(gameObject.transform.position);
     }
 
     void Start()
     {
-        gameManager.SubscribeSpawnPoint(gameObject.transform.position);
-        Destroy(gameObject);
+        
+        Destroy(gameObject,0.5f);
     }
 
     // Update is called once per frame

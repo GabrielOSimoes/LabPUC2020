@@ -14,10 +14,19 @@ public class PlayerSkills : MonoBehaviour
     float skillCurrentTime = 0;
     bool skillCooldownActivated = false;
 
+    bool skillBIsInCooldown = false;
+    float skillBCurrentTime = 0;
+
+    public TMPro.TextMeshProUGUI SkillExplosionText;
+    public TMPro.TextMeshProUGUI SkillHealText;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        SkillExplosionText.text = "Explosion (E) CD: 0";
+        SkillHealText. text = " Heal (Q) CD: 0";
+
         if (SkillClip != null)
         {
             castingSkillClipLength = SkillClip.length;
@@ -35,6 +44,7 @@ public class PlayerSkills : MonoBehaviour
                 skillCooldownActivated = false;
                 skillCurrentTime = 0;
             }
+            SkillExplosionText.text = "Explosion (E) CD: " + skillCurrentTime.ToString("F1");
         }
 
         {
@@ -45,6 +55,23 @@ public class PlayerSkills : MonoBehaviour
         }
 
         skillCurrentTime = Mathf.Clamp(skillCurrentTime, 0, skillCurrentTime);
+
+        if (Input.GetKeyDown(KeyCode.Q) && skillBIsInCooldown == false)
+        {
+            CastSkillB();
+        }
+
+        if(skillBIsInCooldown == true)
+        {
+            skillBCurrentTime += Time.deltaTime;
+            if(skillBCurrentTime >= 20f)
+            {
+                skillBCurrentTime = 0;
+                skillBIsInCooldown = false;
+            }
+
+            SkillHealText.text = "Heal (Q) CD: " + skillBCurrentTime.ToString("F1");
+        }
     }
 
     void CastSkillA()
@@ -55,6 +82,13 @@ public class PlayerSkills : MonoBehaviour
           anim.SetTrigger("CastSkillA");
           //Trigger the start animation events here
           StartCoroutine(CastingSkillA());
+    }
+
+    void CastSkillB()
+    {
+        gameObject.GetComponent<DamageControlPlayer>().HealPlayer();
+        skillBIsInCooldown = true;
+        anim.SetTrigger("CastSkillB");
     }
 
     IEnumerator CastingSkillA()

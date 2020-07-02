@@ -26,7 +26,7 @@ public class ShrineSpawnPosition : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            gameManager.SubscribeShrine(gameObject.transform.position);
+            gameManager.SetShrineSpawnPoint(gameObject.transform.position);
 
             //if (backtoworld)
             //{

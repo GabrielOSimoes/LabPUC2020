@@ -13,6 +13,8 @@ public class TrdWalk : MonoBehaviour
         attack,
     }
 
+    GameObject playerWeapon;
+
     private bool willDie = false;
 
     public States state;
@@ -142,11 +144,23 @@ public class TrdWalk : MonoBehaviour
 
     IEnumerator Attack()
     {
+        if (playerWeapon != null)
+        {
+            playerWeapon.GetComponent<BoxCollider>().enabled = true;
+        }
+
         //equivalente ao Start 
         state = States.attack;
         anim.SetTrigger("Attack");
         yield return new WaitForSeconds(.5f);
         //saida do estado
+
+
+        if (playerWeapon != null)
+        {
+            playerWeapon.GetComponent<BoxCollider>().enabled = false;
+        }
+
         StartCoroutine(Idle());
     }
 
@@ -209,6 +223,16 @@ public class TrdWalk : MonoBehaviour
             anim.SetLookAtWeight(1);
             lookposition = Vector3.Lerp(lookposition, objectToLook.transform.position, Time.deltaTime*10);
             anim.SetLookAtPosition(lookposition+Vector3.up*.5f);
+        }
+        
+    }
+
+    public void SetWeapon(GameObject playerWeapon)
+    {
+        if (playerWeapon != null)
+        {
+            this.playerWeapon = playerWeapon;
+            this.playerWeapon.GetComponent<BoxCollider>().enabled = false;
         }
         
     }

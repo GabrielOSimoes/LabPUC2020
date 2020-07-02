@@ -8,10 +8,15 @@ public class PlayerSpawnPosition : MonoBehaviour
     [SerializeField] Vector3 shrinePosition;
     [SerializeField] GameManager gameManager;
 
-    void Start()
+    private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
-        gameObject.transform.position = gameManager.GetCurrentSpawnPoint();
+    }
+
+    void Start()
+    {  
+        if(SceneManager.GetActiveScene().name == "MinhaSceneTran2")
+       gameObject.transform.position = gameManager.GetCurrentSpawnPoint();
     }
 
     // Update is called once per frame
