@@ -24,8 +24,8 @@ public class PlayerSkills : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SkillExplosionText.text = "Explosion (E) CD: 0";
-        SkillHealText. text = " Heal (Q) CD: 0";
+        SkillExplosionText.text = "Explosion ( E ) Cooldown: 0.0";
+        SkillHealText.text = "Heal(Q) cooldown: 0.0";
 
         if (SkillClip != null)
         {
@@ -44,7 +44,7 @@ public class PlayerSkills : MonoBehaviour
                 skillCooldownActivated = false;
                 skillCurrentTime = 0;
             }
-            SkillExplosionText.text = "Explosion (E) CD: " + skillCurrentTime.ToString("F1");
+            SkillExplosionText.text = "Explosion ( E ) Cooldown: " + skillCurrentTime.ToString("F1");
         }
 
         {
@@ -70,7 +70,7 @@ public class PlayerSkills : MonoBehaviour
                 skillBIsInCooldown = false;
             }
 
-            SkillHealText.text = "Heal (Q) CD: " + skillBCurrentTime.ToString("F1");
+            SkillHealText.text = "Heal ( Q ) cooldown: " + skillBCurrentTime.ToString("F1");
         }
     }
 

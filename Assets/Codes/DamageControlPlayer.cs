@@ -67,11 +67,11 @@ public class DamageControlPlayer : MonoBehaviour
         if (willDie)
         {
             lifes = 0;            
-            playerLifeText.text = ("HP: " + lifes.ToString());
+            playerLifeText.text = ("Lifes: " + lifes.ToString());
         }
         else
         {
-            playerLifeText.text = ("HP: " + lifes.ToString());
+            playerLifeText.text = ("Lifes: " + lifes.ToString());
             
 
         }

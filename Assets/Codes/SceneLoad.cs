@@ -5,22 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoad : MonoBehaviour
 {
-    GameManager gameManager;
-
-    private void Awake()
-    {
-       
-    }
-
-    void Start()
-    {
-        
-    }
+    GameManager gameManager;    
 
     // Update is called once per frame
     void Update()
     {
         
+        if (Input.anyKeyDown)
+        {
+            if(SceneManager.GetActiveScene().name == "Start")
+            {
+                LoadGame();
+            }
+
+            if(SceneManager.GetActiveScene().name == "Vitoria" || SceneManager.GetActiveScene().name == "GameOver")
+            {
+                LoadMenuInicial();
+            }
+        }
     }
 
     public void LoadMenuInicial()
