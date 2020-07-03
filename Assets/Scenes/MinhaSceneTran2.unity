@@ -25253,12 +25253,12 @@ PrefabInstance:
     - target: {fileID: 186758438744516517, guid: ff281fc7a260fb94882d5d9dbe2ba8ed,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.4308435
+      value: 2.1183636
       objectReference: {fileID: 0}
     - target: {fileID: 186758438744516517, guid: ff281fc7a260fb94882d5d9dbe2ba8ed,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -96
+      value: -111
       objectReference: {fileID: 0}
     - target: {fileID: 186758438744516517, guid: ff281fc7a260fb94882d5d9dbe2ba8ed,
         type: 3}
@@ -25403,22 +25403,22 @@ PrefabInstance:
     - target: {fileID: 186758440455938017, guid: ff281fc7a260fb94882d5d9dbe2ba8ed,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 244
+      value: 330
       objectReference: {fileID: 0}
     - target: {fileID: 186758440455938017, guid: ff281fc7a260fb94882d5d9dbe2ba8ed,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 45
+      value: 59
       objectReference: {fileID: 0}
     - target: {fileID: 186758440455938017, guid: ff281fc7a260fb94882d5d9dbe2ba8ed,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 43
+      value: 56
       objectReference: {fileID: 0}
     - target: {fileID: 186758440455938017, guid: ff281fc7a260fb94882d5d9dbe2ba8ed,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 186758440455938017, guid: ff281fc7a260fb94882d5d9dbe2ba8ed,
         type: 3}
@@ -25431,7 +25431,8 @@ PrefabInstance:
       value: "Entre nas Shrines e elimine todos os dem\xF4nios para destrancar os
         port\xF5es.\nPara abrir o port\xE3o, fique em cima da plataforma de madeira
         que est\xE1\nem frente ao port\xE3o.\n\nQuando cercado, use suas skills, aperte
-        E.\n\nPara recuperar o seu hp, aperte Q.\n"
+        E.\n\nPara recuperar o seu hp, aperte Q.\n\nWASD movimenta o personagem. Mouse
+        controla a c\xE2mera.\nBot\xE3o esquerdo do mouse ataca.\n"
       objectReference: {fileID: 0}
     - target: {fileID: 186758440455938017, guid: ff281fc7a260fb94882d5d9dbe2ba8ed,
         type: 3}
