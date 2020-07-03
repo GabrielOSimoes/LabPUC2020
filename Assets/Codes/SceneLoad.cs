@@ -15,12 +15,12 @@ public class SceneLoad : MonoBehaviour
         {
             if(SceneManager.GetActiveScene().name == "Start")
             {
-                LoadGame();
+                StartCoroutine(LoadFirstLevel());
             }
 
             if(SceneManager.GetActiveScene().name == "Vitoria" || SceneManager.GetActiveScene().name == "GameOver")
             {
-                LoadMenuInicial();
+                StartCoroutine(LoadMainMenuIE());
             }
         }
     }
@@ -59,5 +59,20 @@ public class SceneLoad : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         if (gameManager != null)
             Destroy(gameManager.gameObject);
+    }
+
+
+    IEnumerator LoadMainMenuIE()
+    {
+        yield return new WaitForSeconds(1.5f);
+        LoadMenuInicial();
+
+    }
+
+    IEnumerator LoadFirstLevel()
+    {
+        yield return new WaitForSeconds(1.0f);
+        LoadGame();
+
     }
 }
